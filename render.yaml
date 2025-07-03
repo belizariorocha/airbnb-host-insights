@@ -2,7 +2,7 @@ services:
   - type: web
     name: airbnb-host-insights
     env: docker
-    repo: https://github.com/YOUR_USERNAME/airbnb-host-insights
+    repo: https://github.com/belizariorocha/airbnb-host-insights
     dockerfilePath: ./Dockerfile
     plan: starter
     region: oregon
