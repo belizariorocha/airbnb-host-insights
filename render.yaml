@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: superset-web
+    name: superset
     env: docker
     plan: starter
     branch: main
