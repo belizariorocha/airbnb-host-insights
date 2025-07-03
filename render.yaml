@@ -1,25 +1,19 @@
 services:
   - type: web
-    name: airbnb-host-insights
+    name: superset-web
     env: docker
-    repo: https://github.com/belizariorocha/airbnb-host-insights
-    dockerfilePath: ./Dockerfile
     plan: starter
-    region: oregon
+    branch: main
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: SUPERSET_SECRET_KEY
         generateValue: true
       - key: DATABASE_URL
         fromDatabase:
-          name: host-insights-db
+          name: superset-db
           property: connectionString
-      - key: REDIS_URL
-        value: redis://localhost:6379
-    healthCheckPath: /health
 
 databases:
-  - name: host-insights-db
+  - name: superset-db
     plan: free
-    databaseName: host_insights
-    user: host_insights_user
-    region: oregon
+    postgresMajorVersion: 14
