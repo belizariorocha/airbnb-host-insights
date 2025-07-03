@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: airbnb-host-insights
+    env: docker
+    repo: https://github.com/YOUR_USERNAME/airbnb-host-insights
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    region: oregon
+    branch: main
+    envVars:
+      - key: SUPERSET_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: host-insights-db
+          property: connectionString
+      - key: REDIS_URL
+        value: redis://localhost:6379
+    healthCheckPath: /health
+
+databases:
+  - name: host-insights-db
+    plan: starter
+    databaseName: host_insights
+    user: host_insights_user
+    region: oregon
