@@ -6,7 +6,6 @@ services:
     dockerfilePath: ./Dockerfile
     plan: starter
     region: oregon
-    branch: main
     envVars:
       - key: SUPERSET_SECRET_KEY
         generateValue: true
@@ -20,7 +19,7 @@ services:
 
 databases:
   - name: host-insights-db
-    plan: starter
+    plan: free
     databaseName: host_insights
     user: host_insights_user
     region: oregon
